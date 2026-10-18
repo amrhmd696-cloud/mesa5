@@ -89,3 +89,31 @@ test.describe("blog y páginas legales", () => {
     expect(robots).toContain("Disallow: /app/");
   });
 });
+
+test.describe("acceso", () => {
+  test("la zona privada pide iniciar sesión", async ({ page }) => {
+    await page.goto("/app/ajustes");
+    await expect(page).toHaveURL(/\/login\?next=%2Fapp%2Fajustes/);
+    await expect(page.getByRole("heading", { name: "Entra en Mesa5" })).toBeVisible();
+  });
+
+  test("el login muestra Google, email y el error de enlace caducado", async ({ page }) => {
+    await page.goto("/login?error=enlace");
+    await expect(page.getByRole("button", { name: "Continuar con Google" })).toBeVisible();
+    await expect(page.getByLabel("Email")).toBeVisible();
+    await expect(page.getByRole("alert").filter({ hasText: "ha caducado" })).toBeVisible();
+  });
+
+  test("el registro pide aceptar los términos", async ({ page }) => {
+    await page.goto("/registro");
+    await expect(page.getByRole("heading", { name: "Empieza tu prueba gratis" })).toBeVisible();
+    await expect(page.getByRole("checkbox")).toHaveAttribute("required", "");
+    await expect(page.getByRole("link", { name: "términos de servicio" })).toHaveAttribute("href", "/legal/terminos");
+  });
+
+  test("los botones de prueba gratis llevan al registro", async ({ page }) => {
+    await page.goto("/");
+    await page.getByRole("link", { name: "Prueba gratis 14 días" }).first().click();
+    await expect(page).toHaveURL(/\/registro/);
+  });
+});
