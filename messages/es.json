@@ -1,0 +1,164 @@
+{
+  "meta": {
+    "title": "Mesa5 · Responde tus reseñas de Google en segundos",
+    "description": "Mesa5 ayuda a restaurantes independientes a conseguir más reseñas en Google, responderlas con IA en el tono de su casa y entender qué opinan sus clientes. Prueba gratis 14 días."
+  },
+  "nav": {
+    "how": "Cómo funciona",
+    "pricing": "Precios",
+    "faq": "Preguntas",
+    "blog": "Blog",
+    "login": "Entrar",
+    "cta": "Prueba gratis"
+  },
+  "hero": {
+    "eyebrow": "Para restaurantes independientes",
+    "title": "Responde todas tus reseñas de Google en segundos y consigue más clientes",
+    "subtitle": "Mesa5 escribe respuestas con el tono de tu restaurante, te ayuda a conseguir más reseñas con un simple QR y te cuenta qué opinan tus clientes. Desde el móvil, sin complicaciones.",
+    "cta": "Prueba gratis 14 días",
+    "ctaSecondary": "Ver cómo funciona",
+    "note": "Sin tarjeta. Cancela cuando quieras.",
+    "demoReviewAuthor": "Lucía M.",
+    "demoReview": "La paella espectacular, pero tardaron bastante en traer la cuenta.",
+    "demoReplyLabel": "Respuesta sugerida por Mesa5",
+    "demoReply": "¡Gracias, Lucía! Nos alegra muchísimo que la paella te encantara. Sentimos la espera con la cuenta; ya lo hemos hablado con el equipo para que no vuelva a pasar. ¡Te esperamos pronto en La Parrilla! Carlos, del equipo de La Parrilla"
+  },
+  "benefits": {
+    "title": "Todo lo que necesitas para cuidar tu reputación",
+    "subtitle": "Pensado para dueños con poco tiempo, no para expertos en marketing.",
+    "items": {
+      "replies": {
+        "title": "Respuestas en segundos",
+        "text": "Pega una reseña y recibe dos respuestas listas para copiar, con tu tono y tu firma. Nunca inventa ni discute con el cliente."
+      },
+      "more": {
+        "title": "Más reseñas cada semana",
+        "text": "QR para mesas y tickets, tu página de reseñas y un mensaje de WhatsApp listo para enviar después de cada visita."
+      },
+      "insights": {
+        "title": "Entiende a tus clientes",
+        "text": "Mira qué temas se repiten (comida, servicio, espera, precio, limpieza, ambiente) y qué mejora o empeora cada mes."
+      },
+      "mobile": {
+        "title": "Hecho para el móvil",
+        "text": "Respóndelo todo entre servicio y servicio, desde el teléfono, en menos de un minuto."
+      }
+    }
+  },
+  "how": {
+    "title": "Cómo funciona en 3 pasos",
+    "steps": {
+      "1": {
+        "title": "Cuéntanos sobre tu restaurante",
+        "text": "Nombre, tipo de cocina, tono y tus platos estrella. Tardas menos de 3 minutos."
+      },
+      "2": {
+        "title": "Pega una reseña",
+        "text": "Copia la reseña de Google, pégala en Mesa5 y elige entre dos respuestas personalizadas."
+      },
+      "3": {
+        "title": "Publícala y consigue más",
+        "text": "Copia la respuesta en Google y pon tu QR en las mesas para que lleguen nuevas reseñas."
+      }
+    }
+  },
+  "freeTool": {
+    "title": "Pruébalo ahora, gratis",
+    "subtitle": "Pega una reseña real de tu restaurante y mira cómo la responde Mesa5. Sin registrarte.",
+    "comingSoon": "La herramienta gratuita estará disponible muy pronto. Mientras tanto, empieza tu prueba de 14 días."
+  },
+  "pricing": {
+    "title": "Precios claros, sin permanencia",
+    "subtitle": "Empieza con 14 días gratis con todas las funciones de Pro. Sin tarjeta.",
+    "perMonth": "/mes",
+    "taxNote": "IVA incluido.",
+    "popular": "El más elegido",
+    "cta": "Empezar prueba gratis"
+  },
+  "testimonials": {
+    "title": "Lo que dicen los restaurantes",
+    "placeholderNote": "Testimonios de ejemplo: los cambiaremos por opiniones reales de los primeros clientes.",
+    "items": {
+      "1": {
+        "quote": "Antes dejaba las reseñas sin responder durante semanas. Ahora lo hago en el autobús camino al restaurante.",
+        "name": "María G.",
+        "role": "Tasca El Rincón, Sevilla"
+      },
+      "2": {
+        "quote": "El QR en las mesas nos ha traído más reseñas en un mes que en todo el año anterior.",
+        "name": "Javier R.",
+        "role": "Pizzería Nonna, Valencia"
+      },
+      "3": {
+        "quote": "Las respuestas suenan a nosotros, no a un robot. Y me avisa de lo que tengo que mejorar.",
+        "name": "Ana L.",
+        "role": "Café Lila, Madrid"
+      }
+    }
+  },
+  "faq": {
+    "title": "Preguntas frecuentes",
+    "items": {
+      "1": {
+        "q": "¿Necesito tarjeta para la prueba gratuita?",
+        "a": "No. Pruebas Mesa5 durante 14 días con todas las funciones de Pro sin dar ninguna tarjeta. Si te convence, eliges un plan."
+      },
+      "2": {
+        "q": "¿Mesa5 publica las respuestas en Google por mí?",
+        "a": "De momento copias la respuesta y la pegas en Google con un toque. Estamos preparando la conexión directa con Google para publicarlas con un clic."
+      },
+      "3": {
+        "q": "¿Las respuestas suenan a robot?",
+        "a": "No. Mesa5 usa el tono que elijas (cercano, formal o divertido), tu firma y tus platos estrella. Además, siempre puedes pedir una versión más corta, más cálida o más formal."
+      },
+      "4": {
+        "q": "¿Y si la reseña es negativa?",
+        "a": "Mesa5 nunca discute con el cliente ni inventa excusas. Se disculpa, muestra interés y le invita a hablar contigo por un canal privado."
+      },
+      "5": {
+        "q": "¿Es legal pedir reseñas con un QR?",
+        "a": "Sí, siempre que invites a todos tus clientes por igual. Por eso tu página de Mesa5 muestra el botón de Google a todo el mundo, sin filtrar a quien no está contento, tal como exige Google."
+      },
+      "6": {
+        "q": "¿Puedo cancelar cuando quiera?",
+        "a": "Sí. No hay permanencia: cancelas desde tu cuenta en un minuto y conservas tus datos."
+      },
+      "7": {
+        "q": "¿Responde en otros idiomas?",
+        "a": "Sí. Si un turista te escribe en inglés, francés o alemán, Mesa5 responde en el idioma de la reseña."
+      }
+    }
+  },
+  "finalCta": {
+    "title": "Tu próxima reseña de 5 estrellas empieza hoy",
+    "text": "Configura Mesa5 en menos de 3 minutos y responde tu primera reseña ahora mismo.",
+    "cta": "Prueba gratis 14 días"
+  },
+  "footer": {
+    "tagline": "Más reseñas, mejores respuestas, más clientes.",
+    "product": "Producto",
+    "legal": "Legal",
+    "terms": "Términos de servicio",
+    "privacy": "Política de privacidad",
+    "cookies": "Política de cookies",
+    "contact": "Contacto",
+    "rights": "Todos los derechos reservados."
+  },
+  "cookies": {
+    "text": "Usamos solo cookies técnicas necesarias para que la web funcione. No usamos cookies de publicidad.",
+    "more": "Más información",
+    "accept": "Entendido"
+  },
+  "blog": {
+    "title": "Blog de Mesa5",
+    "subtitle": "Consejos prácticos para conseguir y responder reseñas en tu restaurante.",
+    "readMore": "Leer artículo",
+    "back": "Volver al blog",
+    "ctaTitle": "¿Quieres responder tus reseñas en segundos?",
+    "ctaText": "Prueba Mesa5 gratis durante 14 días, sin tarjeta."
+  },
+  "signup": {
+    "title": "Muy pronto podrás crear tu cuenta",
+    "text": "Estamos terminando el registro. Déjanos tu email en hola@mesa5.app y te avisamos el primero."
+  }
+}

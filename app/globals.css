@@ -1,26 +1,79 @@
 @import "tailwindcss";
 
+/*
+  Paleta de Mesa5. Los colores se definen como variables para poder
+  cambiar a modo oscuro sin tocar los componentes.
+  Uso en Tailwind: bg-brand, text-ink, bg-cream, text-star, etc.
+*/
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --cream: #fff8ef;      /* fondo: mantel */
+  --sand: #f3e6d4;       /* superficies suaves */
+  --surface: #ffffff;    /* tarjetas */
+  --ink: #2b211c;        /* texto principal */
+  --ink-soft: #5c4d44;   /* texto secundario */
+  --brand: #c4532f;      /* terracota */
+  --brand-strong: #a6431f;
+  --brand-ink: #ffffff;  /* texto sobre terracota */
+  --star: #e8a33d;       /* mostaza dorado */
+  --olive: #5e7a3a;      /* positivo */
+  --wine: #a23b3b;       /* negativo */
+  --line: #e6d6c1;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --cream: #1d1714;
+    --sand: #2a211c;
+    --surface: #251d19;
+    --ink: #f6ece1;
+    --ink-soft: #cdbcad;
+    --brand: #e0714c;
+    --brand-strong: #ec8a67;
+    --brand-ink: #1d1714;
+    --star: #f0b450;
+    --olive: #93b56b;
+    --wine: #e07b7b;
+    --line: #3a2e27;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@theme inline {
+  --color-cream: var(--cream);
+  --color-sand: var(--sand);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-brand: var(--brand);
+  --color-brand-strong: var(--brand-strong);
+  --color-brand-ink: var(--brand-ink);
+  --color-star: var(--star);
+  --color-olive: var(--olive);
+  --color-wine: var(--wine);
+  --color-line: var(--line);
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-fraunces);
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+}
+
+/* Estilos de texto largo (blog y páginas legales) */
+.prose-mesa h1 { font-family: var(--font-fraunces); font-size: 2rem; line-height: 1.2; font-weight: 700; margin: 0 0 1rem; }
+.prose-mesa h2 { font-family: var(--font-fraunces); font-size: 1.5rem; line-height: 1.3; font-weight: 700; margin: 2rem 0 0.75rem; }
+.prose-mesa h3 { font-size: 1.15rem; font-weight: 600; margin: 1.5rem 0 0.5rem; }
+.prose-mesa p { margin: 0 0 1rem; line-height: 1.7; }
+.prose-mesa ul, .prose-mesa ol { margin: 0 0 1rem 1.25rem; line-height: 1.7; }
+.prose-mesa ul { list-style: disc; }
+.prose-mesa ol { list-style: decimal; }
+.prose-mesa li { margin-bottom: 0.35rem; }
+.prose-mesa a { color: var(--brand); text-decoration: underline; text-underline-offset: 3px; }
+.prose-mesa blockquote { border-left: 4px solid var(--star); background: var(--sand); padding: 0.75rem 1rem; border-radius: 0.5rem; margin: 0 0 1rem; }
+.prose-mesa strong { font-weight: 600; }
+.prose-mesa table { width: 100%; border-collapse: collapse; margin-bottom: 1rem; font-size: 0.95rem; }
+.prose-mesa th, .prose-mesa td { border: 1px solid var(--line); padding: 0.5rem; text-align: left; vertical-align: top; }
