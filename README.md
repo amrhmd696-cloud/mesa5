@@ -132,6 +132,21 @@ Para que el enlace de confirmación funcione aunque el cliente abra el email en 
 
 `npm run test:db` crea un Postgres temporal, aplica las migraciones y comprueba que un restaurante nunca puede ver ni modificar los datos de otro. Necesita Postgres 15 o superior instalado y no puede ejecutarse como root.
 
+## Configurar la IA de Anthropic (paso a paso)
+
+Las respuestas a reseñas las escribe Claude, la IA de Anthropic. Pagas solo por lo que se usa (con el modelo rápido, una respuesta cuesta menos de una décima de céntimo).
+
+1. Crea una cuenta en [platform.claude.com](https://platform.claude.com) y añade saldo en **Billing** (con 5 € tienes para miles de respuestas). Pon un límite de gasto mensual en **Limits** para estar tranquilo.
+2. En **API Keys**, pulsa **Create Key**, ponle de nombre `mesa5-vercel` y copia la clave (empieza por `sk-ant-`). Solo se ve una vez.
+3. En Vercel → tu proyecto → **Settings → Environment Variables**, añade `ANTHROPIC_API_KEY` con la clave, marca **Sensitive** y los entornos **Production** y **Preview**. No la pegues en ningún otro sitio (ni en el chat, ni en GitHub).
+4. Haz **Redeploy** del último despliegue para que la use.
+
+Opcional: `AI_MODEL_FAST` y `AI_MODEL_SMART` cambian los modelos sin tocar código, y `AI_USD_TO_EUR` el cambio de dólar a euro con el que se calcula el coste de cada respuesta (tabla `ai_usage`).
+
+### Probar las reglas de la IA con reseñas de ejemplo
+
+`npm run test:ai` envía una batería de reseñas (positivas, negativas, en inglés, ofensivas, con trampas) y comprueba que cada respuesta cumple las reglas. Necesita `ANTHROPIC_API_KEY` en tu `.env.local` y gasta unos céntimos.
+
 ## Configurar Stripe
 
 Se documentará aquí en la fase 1F.
