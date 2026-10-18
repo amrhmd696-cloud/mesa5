@@ -76,7 +76,7 @@ Abre <http://localhost:3000> en el navegador.
 
 1. Entra en [vercel.com/signup](https://vercel.com/signup) y regístrate con **"Continue with GitHub"**.
 2. Pulsa **Add New… → Project** y elige el repositorio `mesa5` (si no aparece, pulsa "Adjust GitHub App Permissions" y dale acceso).
-3. Vercel detecta Next.js solo. Abre **Environment Variables** y añade las de `.env.example`, poniendo en `NEXT_PUBLIC_SITE_URL` la dirección que te dará Vercel (por ejemplo `https://mesa5.vercel.app`).
+3. Vercel detecta Next.js solo. Abre **Environment Variables** y añade las de `.env.example`, poniendo en `NEXT_PUBLIC_SITE_URL` la dirección que te dará Vercel (por ejemplo `https://mesa5-blond.vercel.app`), y cuando tengas dominio propio, `https://mesa5.app`.
 4. Pulsa **Deploy**. En un par de minutos tendrás la web online.
 5. Cada vez que se suba código nuevo a GitHub, Vercel publica la nueva versión automáticamente.
 
@@ -108,8 +108,8 @@ Ponlas en `.env.local` (en tu ordenador) y en Vercel (**Settings → Environment
 
 En **Authentication → URL Configuration**:
 
-- **Site URL**: la dirección de tu web en Vercel, por ejemplo `https://mesa5.vercel.app`.
-- **Redirect URLs**: añade `https://mesa5.vercel.app/**` y `http://localhost:3000/**`.
+- **Site URL**: la dirección de tu web, `https://mesa5.app`.
+- **Redirect URLs**: añade `https://mesa5.app/**`, `https://*-mesa26.vercel.app/**` (vistas previas) y `http://localhost:3000/**`.
 
 ### 4. Emails de confirmación (recomendado)
 
