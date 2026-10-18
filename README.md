@@ -90,7 +90,7 @@ Supabase guarda los usuarios, los restaurantes y todos los datos. Necesitas hace
 
 1. En [supabase.com](https://supabase.com), abre tu proyecto y entra en **SQL Editor** (menú de la izquierda).
 2. Pulsa **New query**.
-3. Abre el archivo `supabase/migrations/20261018000001_cuentas.sql` de este repositorio, copia **todo** su contenido y pégalo.
+3. Abre cada archivo de `supabase/migrations/` de este repositorio, en orden, copia **todo** su contenido y pégalo.
 4. Pulsa **Run**. Debe salir "Success. No rows returned".
 
 Cuando haya migraciones nuevas (cada fase añade una), se repite con el archivo nuevo, siempre en orden.

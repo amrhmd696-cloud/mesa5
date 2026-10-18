@@ -115,6 +115,10 @@ do $$ begin
   perform public.create_restaurant_with_org('X', 'x-x', null, null, null, 'cercano', null, null, null);
   raise exception 'FALLO: un anónimo pudo crear un restaurante';
 exception when insufficient_privilege then null; end $$;
+do $$ begin
+  perform public.is_org_member(gen_random_uuid());
+  raise exception 'FALLO: un anónimo pudo llamar a is_org_member';
+exception when insufficient_privilege then null; end $$;
 reset role;
 
 -- ── Validaciones de datos ──
