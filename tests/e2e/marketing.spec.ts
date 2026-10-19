@@ -97,6 +97,11 @@ test.describe("acceso", () => {
     await expect(page.getByRole("heading", { name: "Entra en Mesa5" })).toBeVisible();
   });
 
+  test("las reseñas también piden iniciar sesión", async ({ page }) => {
+    await page.goto("/app/resenas/nueva");
+    await expect(page).toHaveURL(/\/login\?next=%2Fapp%2Fresenas%2Fnueva/);
+  });
+
   test("el login muestra Google, email y el error de enlace caducado", async ({ page }) => {
     await page.goto("/login?error=enlace");
     await expect(page.getByRole("button", { name: "Continuar con Google" })).toBeVisible();

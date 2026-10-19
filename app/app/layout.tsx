@@ -13,11 +13,16 @@ export default function AppLayout({ children }: LayoutProps<"/app">) {
   return (
     <>
       <header className="sticky top-0 z-40 border-b border-line bg-cream/90 backdrop-blur">
-        <div className="mx-auto flex h-16 max-w-3xl items-center justify-between gap-3 px-4">
+        <div className="mx-auto flex h-16 max-w-3xl items-center gap-3 px-4">
           <Link href="/app" aria-label="Mesa5, tu panel">
             <Logo />
           </Link>
-          <div className="flex items-center gap-3">
+          <nav aria-label="Panel" className="flex items-center gap-1 text-sm font-semibold">
+            <Link href="/app/resenas" className="min-h-10 rounded-full px-3 py-2 hover:text-brand">
+              Reseñas
+            </Link>
+          </nav>
+          <div className="ml-auto flex items-center gap-3">
             <Suspense fallback={null}>
               <RestaurantName />
             </Suspense>
