@@ -77,9 +77,11 @@ export default async function AppHomePage() {
               {hasReviews ? "Ver tus reseñas respondidas" : "Responder tu primera reseña con IA"}
             </Link>
           </li>
-          <li className="flex gap-3 text-ink-soft">
-            <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-sand text-sm font-bold">3</span>
-            <span>Descargar tu QR para las mesas <em className="text-xs">(muy pronto)</em></span>
+          <li className="flex gap-3">
+            <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand text-sm font-bold text-brand-ink">3</span>
+            <Link href="/app/kit" className="font-semibold text-brand underline underline-offset-4">
+              Imprimir tu QR para las mesas
+            </Link>
           </li>
         </ol>
       </section>
