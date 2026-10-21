@@ -81,7 +81,10 @@ export default async function ReviewPage({ params }: PageProps<"/app/resenas/[id
 
       {!canUseAi && (
         <p role="status" className="rounded-xl bg-wine/10 p-3 text-sm text-wine">
-          {QUOTA_MESSAGES[status]}
+          {QUOTA_MESSAGES[status]}{" "}
+          <Link href="/app/plan" className="font-semibold underline underline-offset-4">
+            Ver planes
+          </Link>
         </p>
       )}
 

@@ -102,6 +102,16 @@ test.describe("acceso", () => {
     await expect(page).toHaveURL(/\/login\?next=%2Fapp%2Fresenas%2Fnueva/);
   });
 
+  test("la página del plan pide iniciar sesión", async ({ page }) => {
+    await page.goto("/app/plan");
+    await expect(page).toHaveURL(/\/login\?next=%2Fapp%2Fplan/);
+  });
+
+  test("el webhook de Stripe no acepta nada si no está configurado", async ({ request }) => {
+    const res = await request.post("/api/stripe/webhook", { data: "{}" });
+    expect(res.status()).toBe(503);
+  });
+
   test("el login muestra Google, email y el error de enlace caducado", async ({ page }) => {
     await page.goto("/login?error=enlace");
     await expect(page.getByRole("button", { name: "Continuar con Google" })).toBeVisible();

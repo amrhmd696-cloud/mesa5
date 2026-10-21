@@ -129,7 +129,7 @@ select pg_temp.as_user('00000000-0000-0000-0000-0000000000c1');
 select pg_temp.assert(public.reply_quota_status((select id from public.organizations)) = 'trial_expired', 'prueba caducada bloquea la IA');
 select pg_temp.assert((select count(*) from public.reviews) = 1, 'con la prueba caducada sigue viendo su historial');
 reset role;
-update public.organizations set subscription_status = 'past_due'
+update public.organizations set subscription_status = 'unpaid'
   where id = (select org_id from public.restaurants where slug = 'bar-dani');
 select pg_temp.as_user('00000000-0000-0000-0000-0000000000d1');
 select pg_temp.assert(public.reply_quota_status((select id from public.organizations)) = 'inactive', 'impago bloquea la IA');

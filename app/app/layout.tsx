@@ -21,6 +21,9 @@ export default function AppLayout({ children }: LayoutProps<"/app">) {
             <Link href="/app/resenas" className="min-h-10 rounded-full px-3 py-2 hover:text-brand">
               Reseñas
             </Link>
+            <Link href="/app/plan" className="min-h-10 rounded-full px-3 py-2 hover:text-brand">
+              Plan
+            </Link>
           </nav>
           <div className="ml-auto flex items-center gap-3">
             <Suspense fallback={null}>
