@@ -107,6 +107,17 @@ test.describe("acceso", () => {
     await expect(page).toHaveURL(/\/login\?next=%2Fapp%2Fplan/);
   });
 
+  test("el kit de reseñas pide iniciar sesión", async ({ page }) => {
+    await page.goto("/app/kit");
+    await expect(page).toHaveURL(/\/login\?next=%2Fapp%2Fkit/);
+  });
+
+  test("la página pública de un restaurante que no existe muestra el 404", async ({ page }) => {
+    await page.goto("/r/no-existe");
+    await expect(page.getByRole("heading", { name: "Esta mesa no está reservada" })).toBeVisible();
+    await expect(page.locator('meta[name="robots"]').first()).toHaveAttribute("content", /noindex/);
+  });
+
   test("el webhook de Stripe no acepta nada si no está configurado", async ({ request }) => {
     const res = await request.post("/api/stripe/webhook", { data: "{}" });
     expect(res.status()).toBe(503);

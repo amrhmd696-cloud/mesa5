@@ -1,7 +1,9 @@
 "use server";
 
+import { updateTag } from "next/cache";
 import { redirect } from "next/navigation";
 import { getWorkspace, requireUser } from "@/lib/auth";
+import { restaurantTag } from "@/lib/kit";
 import { slugify } from "@/lib/slug";
 import { createClient } from "@/lib/supabase/server";
 import { restaurantSchema, usefulInfo } from "@/lib/validation/restaurant";
@@ -77,5 +79,7 @@ export async function updateRestaurant(_: RestaurantFormState, formData: FormDat
     console.error("[ajustes]", error.message);
     return { error: "No hemos podido guardar los cambios. Inténtalo de nuevo." };
   }
+  // La página pública /r/<slug> está en caché: que se vea el cambio al momento.
+  updateTag(restaurantTag(workspace.restaurant.slug));
   return { ok: "Cambios guardados." };
 }
