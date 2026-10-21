@@ -147,9 +147,27 @@ Opcional: `AI_MODEL_FAST` y `AI_MODEL_SMART` cambian los modelos sin tocar códi
 
 `npm run test:ai` envía una batería de reseñas (positivas, negativas, en inglés, ofensivas, con trampas) y comprueba que cada respuesta cumple las reglas. Necesita `ANTHROPIC_API_KEY` en tu `.env.local` y gasta unos céntimos.
 
-## Configurar Stripe
+## Configurar Stripe (paso a paso)
 
-Se documentará aquí en la fase 1F.
+Mesa5 cobra con Stripe. La prueba de 14 días no pasa por Stripe: el cliente solo va a Stripe cuando elige un plan en **Tu plan** (`/app/plan`). Todo esto se hace primero en el **sandbox** (modo de prueba) y se repite en modo real al lanzar.
+
+1. **Clave secreta de Stripe.** En Stripe → Desarrolladores → Claves de API, copia la **clave secreta** (`sk_test_...` en el sandbox). En Vercel → Settings → Environment Variables añade `STRIPE_SECRET_KEY`, tipo **Secret**, entornos Production y Preview.
+2. **Clave secreta de Supabase.** El servidor la necesita para guardar el plan de cada cliente (el navegador no puede tocarlo). En Supabase → Project Settings → API Keys → **Secret keys**, copia la clave (`sb_secret_...`) y añádela en Vercel como `SUPABASE_SECRET_KEY`, tipo **Secret**, Production y Preview. Es la más delicada: no la pegues en ningún otro sitio.
+3. **Productos.** En Product catalogue crea `Mesa5 Básico` (19 €), `Mesa5 Pro` (39 €) y `Mesa5 Multi` (79 €), con precio **recurrente mensual** en EUR. Los IDs de los precios del sandbox ya están en `lib/billing/subscription.ts`; en modo real pon los nuevos en `STRIPE_PRICE_BASIC`, `STRIPE_PRICE_PRO` y `STRIPE_PRICE_MULTI` (no son secretos).
+4. **Portal del cliente.** En Settings → Billing → **Customer portal**, activa: actualizar el método de pago, ver facturas, cancelar la suscripción (al final del periodo) y **cambiar de plan** con los tres productos. Pulsa **Save**. Sin este paso el botón «Gestionar mi suscripción» no funciona.
+5. **Webhook.** En Desarrolladores → Webhooks → **Add destination**, URL `https://mesa5.app/api/stripe/webhook`, con estos eventos:
+   `checkout.session.completed`, `customer.subscription.created`, `customer.subscription.updated`, `customer.subscription.deleted`, `customer.subscription.paused`, `customer.subscription.resumed`, `invoice.paid`, `invoice.payment_failed`, `invoice.payment_action_required`.
+   Copia el **signing secret** (`whsec_...`) y añádelo en Vercel como `STRIPE_WEBHOOK_SECRET`, tipo **Secret**.
+6. **Código de socio fundador.** En Product catalogue → **Coupons** → New: 30 %, duración **Forever**. Dentro del cupón, crea un **código de promoción** (por ejemplo `FUNDADOR`) con un máximo de **10 usos**. Quien lo escriba en «¿Tienes un código de socio fundador?» tiene además el primer mes gratis.
+7. Haz **Redeploy** para que Vercel use las claves nuevas.
+
+**Probar un pago:** en el sandbox usa la tarjeta `4242 4242 4242 4242`, cualquier fecha futura y cualquier CVC. Para un pago rechazado, `4000 0000 0000 0341` (se acepta al guardarla y falla al cobrar). Más tarjetas en la [documentación de Stripe](https://docs.stripe.com/testing).
+
+**Qué pasa en cada caso:**
+- Pago correcto → el plan se activa al volver de Stripe (y el webhook lo confirma).
+- Pago fallido → estado «Pago pendiente»: sigue funcionando mientras Stripe reintenta el cobro y se avisa en el panel.
+- Impagada o cancelada → se bloquea la IA; el historial y la página pública siguen funcionando.
+- Cada evento de Stripe se apunta en la tabla `stripe_events` para no procesarlo dos veces, y su firma se comprueba siempre.
 
 ## Páginas legales
 

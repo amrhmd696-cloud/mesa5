@@ -2,6 +2,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getWorkspace, requireUser } from "@/lib/auth";
 import { trialDaysLeft as daysLeft } from "@/lib/billing/trial";
+import { QUOTA_MESSAGES } from "@/lib/reviews";
 import { createClient } from "@/lib/supabase/server";
 
 // Panel principal. En la fase 1E se llenará de estadísticas; por ahora da la
@@ -27,12 +28,35 @@ export default async function AppHomePage() {
         <p className="mt-1 text-ink-soft">{ws.restaurant.name} ya está en Mesa5.</p>
       </div>
 
-      {ws.org.plan === "trial" && (
-        <div className="rounded-2xl border border-star/60 bg-star/10 p-4">
-          <p className="font-semibold">
-            Te quedan {trialDaysLeft} {trialDaysLeft === 1 ? "día" : "días"} de prueba gratuita
+      {ws.org.plan === "trial" &&
+        (trialDaysLeft > 0 ? (
+          <div className="rounded-2xl border border-star/60 bg-star/10 p-4">
+            <p className="font-semibold">
+              Te quedan {trialDaysLeft} {trialDaysLeft === 1 ? "día" : "días"} de prueba gratuita
+            </p>
+            <p className="mt-1 text-sm text-ink-soft">Tienes todas las funciones de Pro. No necesitas tarjeta.</p>
+            <Link href="/app/plan" className="mt-2 inline-block text-sm font-semibold text-brand underline underline-offset-4">
+              Ver planes
+            </Link>
+          </div>
+        ) : (
+          <div role="alert" className="rounded-2xl border border-wine/30 bg-wine/5 p-4">
+            <p className="font-semibold text-wine">{QUOTA_MESSAGES.trial_expired}</p>
+            <Link href="/app/plan" className="mt-2 inline-block text-sm font-semibold text-brand underline underline-offset-4">
+              Elegir un plan
+            </Link>
+          </div>
+        ))}
+      {ws.org.plan !== "trial" && ws.org.subscriptionStatus !== "active" && ws.org.subscriptionStatus !== "trialing" && (
+        <div role="alert" className="rounded-2xl border border-wine/30 bg-wine/5 p-4">
+          <p className="font-semibold text-wine">
+            {ws.org.subscriptionStatus === "past_due"
+              ? "No hemos podido cobrar tu último pago. Actualiza tu tarjeta para no perder el acceso a la IA."
+              : QUOTA_MESSAGES.inactive}
           </p>
-          <p className="mt-1 text-sm text-ink-soft">Tienes todas las funciones de Pro. No necesitas tarjeta.</p>
+          <Link href="/app/plan" className="mt-2 inline-block text-sm font-semibold text-brand underline underline-offset-4">
+            Ir a tu plan
+          </Link>
         </div>
       )}
 

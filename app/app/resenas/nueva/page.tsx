@@ -29,7 +29,7 @@ export default async function NewReviewPage() {
       {status !== "ok" ? (
         <div role="alert" className="rounded-2xl border border-wine/30 bg-wine/5 p-5">
           <p className="font-semibold text-wine">{QUOTA_MESSAGES[status]}</p>
-          <Link href="/#precios" className="mt-3 inline-block font-semibold text-brand underline underline-offset-4">
+          <Link href="/app/plan" className="mt-3 inline-block font-semibold text-brand underline underline-offset-4">
             Ver planes
           </Link>
         </div>
