@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import QRCode from "qrcode";
+import { LogoMark } from "@/components/Logo";
 import { PrintButton } from "@/components/kit/PrintButton";
 import { getWorkspace, requireUser } from "@/lib/auth";
 import { reviewPageUrl } from "@/lib/kit";
@@ -46,6 +47,7 @@ export default async function PrintPage({ searchParams }: PageProps<"/app/kit/im
           <p className="text-[11pt] font-bold">{ws.restaurant.name}</p>
           <div className="mx-auto mt-[2mm] w-[38mm]" dangerouslySetInnerHTML={{ __html: svg }} />
           <p className="mt-[2mm] text-[9pt] leading-snug">Tu opinión nos ayuda mucho. Escanea y déjanos tu reseña en Google. ¡Gracias!</p>
+          <MadeWithMesa5 className="mt-[2mm]" />
         </div>
       ) : (
         <div className="mx-auto grid w-[210mm] max-w-full grid-cols-2 bg-white text-black print:max-w-none">
@@ -60,10 +62,27 @@ export default async function PrintPage({ searchParams }: PageProps<"/app/kit/im
               <div className="mx-auto my-[5mm] w-full max-w-[52mm]" dangerouslySetInnerHTML={{ __html: svg }} />
               <p className="text-[11pt] font-semibold leading-snug">Escanea y déjanos tu reseña en Google</p>
               <p className="mt-[2mm] text-[9pt] text-black/60">¡Gracias por tu visita!</p>
+              <MadeWithMesa5 className="mt-[4mm]" />
             </div>
           ))}
         </div>
       )}
+    </div>
+  );
+}
+
+// Firma pequeña de Mesa5 al pie: otros restaurantes la ven y pueden apuntarse.
+// Colores claros fijos para que se imprima igual aunque el móvil esté en modo oscuro.
+const LIGHT_LOGO = { "--ink": "#2b211c", "--brand": "#c4532f", "--star": "#e8a33d" } as React.CSSProperties;
+
+function MadeWithMesa5({ className }: { className?: string }) {
+  return (
+    <div className={`text-[7.5pt] leading-tight text-black/55 ${className ?? ""}`} style={LIGHT_LOGO}>
+      <p className="flex items-center justify-center gap-[1mm]">
+        <LogoMark className="h-[5mm] w-[5mm]" />
+        Hecho con <span className="font-display font-bold text-black/80">Mesa<span className="text-[#c4532f]">5</span></span>
+      </p>
+      <p>¿Tienes un restaurante? mesa5.app</p>
     </div>
   );
 }
